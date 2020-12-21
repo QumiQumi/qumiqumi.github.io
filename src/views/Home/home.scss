@@ -1,0 +1,189 @@
+.home {
+	display: grid;
+	grid-template-columns: 1fr 3.5fr 1fr;
+	grid-template-rows: 50px 1.5fr 1fr 1fr 1fr 92px;
+	gap: 0px 0px;
+	grid-template-areas:
+		"nav nav nav"
+		". header . "
+		". for-whom . "
+		"about about about "
+		". advantages . "
+		"footer footer footer";
+	width: 100%;
+	h3 {
+		font-size: 24px;
+		line-height: 28px;
+		font-style: normal;
+		font-weight: normal;
+		text-align: center;
+	}
+}
+
+.nav {
+	grid-area: nav;
+	background-color: #ffffff;
+	box-shadow: 0px 20px 44px -15px rgba(122, 118, 255, 0.22);
+	img {
+		height: 30px;
+		width: 130px;
+		margin-left: 44px;
+	}
+}
+.header-bg {
+	background: url("../../assets/images/bg-header.svg") no-repeat;
+	background-size: cover;
+	background-position: center top;
+	grid-row: 2/3;
+	grid-column: 1/4;
+}
+.header {
+	display: grid;
+
+	grid-area: header;
+
+	&__button-signin {
+		width: max-content;
+		height: 45px;
+		padding: 0 51px;
+		background-color: #7a76ff;
+		border-radius: 6px;
+		margin-top: 46px;
+		text-decoration: none;
+		color: white;
+		font-size: 24px;
+		line-height: 33px;
+	}
+	&__title {
+		align-self: center;
+
+		h2 {
+			font-size: 24px;
+			line-height: 28px;
+			width: 490px;
+		}
+	}
+}
+
+.for-whom {
+	grid-area: for-whom;
+	place-self: center center;
+	> div {
+		margin: 0 50px;
+	}
+	img {
+		transition: ease-in 0.2s;
+		&:hover {
+			transform: scale(1.03);
+		}
+	}
+	&__title {
+		text-align: center;
+	}
+}
+
+.about {
+	place-self: center;
+	grid-area: about;
+	justify-self: stretch;
+	&__title {
+		margin-bottom: 23px;
+		text-align: center;
+	}
+	&__img {
+		width: 100%;
+		height: 367px;
+		background: url("../../assets/images/about.png") no-repeat;
+		background-size: cover;
+		background-position: center;
+	}
+	img {
+		max-width: 100%;
+		height: auto;
+	}
+	&__desc {
+		z-index: 3;
+		width: 560px;
+		padding: 42px 34px;
+		text-align: center;
+		background-color: #fff;
+		border-radius: 10px;
+		box-shadow: 0px 22px 44px -15px rgba(122, 118, 255, 0.27);
+		margin-top: -100px;
+	}
+}
+
+.advantages {
+	grid-area: advantages;
+	place-self: center center;
+
+	&__title {
+		grid-area: advantages__header;
+		margin-bottom: 23px;
+	}
+
+	&__content {
+		width: 100%;
+	}
+	&__items {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		margin-top: 15px;
+	}
+	&__item {
+		width: 290px;
+		display: flex;
+		text-align: center;
+		flex-direction: column;
+		align-items: center;
+		padding: 10px;
+	}
+	&__icon {
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+		background: linear-gradient(
+			217.54deg,
+			#7a76ff 26.26%,
+			#a976ff 52.94%,
+			#e476ff 80.19%
+		);
+		img {
+			padding: 15px;
+		}
+		margin-bottom: 25px;
+	}
+	&__title {
+		font-size: 20px;
+		margin-bottom: 8px;
+	}
+	&__text {
+		width: 100%;
+	}
+}
+
+.footer {
+	display: grid;
+	grid-template-columns: 1fr 3.5fr 1fr;
+	grid-template-rows: 1fr;
+	grid-template-areas: ". footer__content .";
+	grid-area: footer;
+	background-color: #7a76ff;
+	color: #fff;
+	&__content {
+		grid-area: footer__content;
+		// place-items: center center;
+	}
+	&__questions {
+		a {
+			color: #ffffff;
+			text-decoration: none;
+		}
+	}
+	&__social {
+		i {
+			margin-left: 21px;
+		}
+	}
+}

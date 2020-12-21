@@ -1,0 +1,30 @@
+@import "./colors.scss";
+.table {
+  background-color: #ffffff;
+  border-radius: 5px;
+  tbody {
+    tr:hover {
+      background-color: $purple !important;
+      color: #ffffff !important;
+      input,
+      .table__tool {
+        color: #ffffff !important;
+      }
+    }
+    tr:hover {
+      color: #ffffff !important;
+    }
+    tr:hover .table__tool {
+      visibility: visible;
+    }
+    td {
+      input {
+        width: max-content;
+        outline: none;
+      }
+    }
+  }
+  &__tool {
+    visibility: hidden;
+  }
+}

@@ -1,0 +1,12 @@
+export const baseUrl = "https://eschool11.herokuapp.com/api/";
+export const authUrl = baseUrl + "login";
+export const studentsUrl = baseUrl + "students";
+export const lessonsUrl = baseUrl + "lessons";
+export const classStudentsUrl = baseUrl + "classes/%/students";
+export const classesUrl = baseUrl + "classes";
+export const teachersUrl = baseUrl + "teachers";
+export const classTeachersUrl = baseUrl + "class_teachers";
+export const subjectsUrl = baseUrl + "subjects";
+export const homeworksUrl = baseUrl + "homeworks";
+export const filesUrl = baseUrl + "homeworks/%/uploadTiles";
+export const timetableUrl = baseUrl + "classes/%/timetables/getByDate";

@@ -1,0 +1,169 @@
+{
+	"timetable": [
+		{
+			"id": 1,
+			"date": "15.12.2020",
+			"number_of_lesson": 1
+		},
+		{
+			"id": 2,
+			"date": "15.12.2020",
+			"number_of_lesson": 2
+		},
+		{
+			"id": 3,
+			"date": "15.12.2020",
+			"number_of_lesson": 3
+		},
+		{
+			"id": 4,
+			"date": "15.12.2020",
+			"number_of_lesson": 4
+		},
+		{
+			"id": 5,
+			"date": "15.12.2020",
+			"number_of_lesson": 5
+		},
+		{
+			"id": 6,
+			"date": "15.12.2020",
+			"number_of_lesson": 6
+		},
+		{
+			"id": 7,
+			"date": "15.12.2020",
+			"number_of_lesson": 7
+		},
+		{
+			"id": 8,
+			"date": "15.12.2020",
+			"number_of_lesson": 8
+		},
+		{
+			"id": 9,
+			"date": "16.12.2020",
+			"number_of_lesson": 1
+		},
+		{
+			"id": 10,
+			"date": "16.12.2020",
+			"number_of_lesson": 2
+		},
+		{
+			"id": 11,
+			"date": "16.12.2020",
+			"number_of_lesson": 3
+		},
+		{
+			"id": 12,
+			"date": "16.12.2020",
+			"number_of_lesson": 4
+		}
+	],
+	"classes": [
+		{
+			"id": 1,
+			"class_number": "5А",
+			"teacher_id": "1"
+		},
+		{
+			"id": 2,
+			"class_number": "3Н",
+			"teacher_id": "2"
+		}
+	],
+	"students": [
+		{
+			"id": 1,
+			"fio": "json-server",
+			"login": "typicode",
+			"password": "lfjshld",
+			"class": "1A"
+		},
+		{
+			"id": 2,
+			"fio": "json-server",
+			"login": "typicode",
+			"password": "lfjshld",
+			"class": "1A"
+		},
+		{
+			"id": 3,
+			"fio": "json-server",
+			"login": "typicode",
+			"password": "lfjshld",
+			"class": "1A"
+		},
+		{
+			"id": 4,
+			"fio": "json-server",
+			"login": "typicode",
+			"password": "lfjshld",
+			"class": "1A"
+		},
+		{
+			"id": 5,
+			"fio": "json-server",
+			"login": "typicode",
+			"password": "lfjshld",
+			"class": "1A"
+		},
+		{
+			"id": 6,
+			"fio": "json-server",
+			"login": "typicode",
+			"password": "lfjshld",
+			"class": "1A"
+		},
+		{
+			"id": 7,
+			"fio": "чел из 5Б",
+			"login": "typicode",
+			"password": "lfjshld",
+			"class": "5Б"
+		},
+		{
+			"id": 8,
+			"fio": "чел из 5Б",
+			"login": "typicode",
+			"password": "lfjshld",
+			"class": "5Б"
+		},
+		{
+			"id": 9,
+			"fio": "чел из 5Б",
+			"login": "typicode",
+			"password": "lfjshld",
+			"class": "5Б"
+		},
+		{
+			"id": 10,
+			"fio": "чел из 5Б",
+			"login": "typicode",
+			"password": "lfjshld",
+			"class": "5Б"
+		},
+		{
+			"id": 11,
+			"fio": "чел из 5Б",
+			"login": "typicode",
+			"password": "lfjshld",
+			"class": "5Б"
+		},
+		{
+			"id": 12,
+			"fio": "чел из 5Б",
+			"login": "typicode",
+			"password": "lfjshld",
+			"class": "5Б"
+		},
+		{
+			"id": 13,
+			"fio": "чел из 5Б",
+			"login": "typicode",
+			"password": "lfjshld",
+			"class": "5Б"
+		}
+	]
+}

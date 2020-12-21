@@ -1,0 +1,16 @@
+stages:
+  - build
+
+build-serv:
+  stage: build
+  only:
+    - master
+  script:
+    - rm -rf /builds/gcuKrso5/0/tpu-oct-2020/$CI_GROUP/backend/frontend
+    - cp -r /builds/gcuKrso5/0/tpu-oct-2020/$CI_GROUP/frontend /builds/gcuKrso5/0/tpu-oct-2020/$CI_GROUP/backend/frontend
+    - cd /builds/gcuKrso5/0/tpu-oct-2020/deploy/$CI_GROUP
+    - docker-compose exec -T workspace-$CI_GROUP /bin/bash -c "chmod -R 777 /var/www/frontend"
+    - docker-compose exec -T workspace-$CI_GROUP /bin/bash -c "cd /var/www/frontend && npm install && npm run build"
+    - docker-compose exec -T workspace-$CI_GROUP /bin/bash -c "cd /var/www && ln -s frontend/dist/index.html index.html || true"
+  tags:
+    - academy-vm-server
