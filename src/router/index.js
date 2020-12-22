@@ -60,7 +60,7 @@ const routes = [
 		meta: {
 			layout: "main",
 			requiresAuth: true,
-			roles: ["class_teacher, teacher"]
+			roles: ["class_teacher, teacher, student"]
 		},
 		component: () => import("../views/Lesson/Lesson.vue")
 	},
@@ -70,7 +70,7 @@ const routes = [
 		meta: {
 			layout: "main",
 			requiresAuth: true,
-			roles: ["class_teacher, teacher"]
+			roles: ["class_teacher, teacher, student"]
 		},
 		component: () => import("../views/Lesson/AddHomework.vue")
 	},
@@ -80,7 +80,7 @@ const routes = [
 		meta: {
 			layout: "main",
 			requiresAuth: true,
-			roles: ["class_teacher, teacher"]
+			roles: ["class_teacher, teacher, student"]
 		},
 		component: () => import("../views/Lesson/AddHomework.vue")
 	}

@@ -417,8 +417,7 @@ export default {
 		},
 		redirectToLesson(lesson) {
 			let userId = this.$store.getters.user.id;
-
-			if (userId === lesson.teacher.id)
+			if (this.role === "student" || userId === lesson.teacher.id)
 				this.$router.push({
 					name: "lesson",
 					params: { id: lesson.id },

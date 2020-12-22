@@ -4,9 +4,7 @@
 	box-shadow: 0px 22px 44px -15px rgba(236, 237, 254, 0.49);
 	border-radius: 13px;
 	margin-bottom: 60px;
-	@media (max-width: 1280px) {
-		padding: 40px;
-	}
+
 	&__title {
 		width: 100%;
 		display: flex;
@@ -24,8 +22,8 @@
 }
 
 .lesson-homework {
-	display: flex;
-	flex-direction: column;
+	// display: flex;
+	// flex-direction: column;
 	&__title {
 		font-size: 18px;
 		margin-bottom: 40px;
@@ -40,5 +38,23 @@
 		margin-bottom: 40px;
 		width: 100%;
 		text-align: center;
+	}
+	&__header {
+		width: inherit;
+		height: 44px;
+		padding-right: 106px;
+	}
+	&__row {
+		width: inherit;
+		height: 44px;
+		padding-right: 106px;
+		padding-left: 17px;
+		color: #ffffff;
+		margin-bottom: 20px;
+		background-color: #7a76ff;
+		border-radius: 8px;
+	}
+	&__button {
+		margin-top: 30px;
 	}
 }

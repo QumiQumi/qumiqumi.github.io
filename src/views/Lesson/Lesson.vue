@@ -10,7 +10,9 @@
 					{{ lesson.subject ? lesson.subject.name : "" }},
 					{{ lesson.class ? lesson.class.class_number : "" }}
 				</h1>
-				<v-icon v-if="!isEdit" @click="editLesson">mdi-pencil-outline</v-icon>
+				<v-icon v-if="!isEdit && role !== 'student'" @click="editLesson"
+					>mdi-pencil-outline</v-icon
+				>
 			</div>
 			<div v-if="!isEdit">
 				<div class="lesson__theme">
@@ -40,13 +42,41 @@
 			</div>
 		</div>
 
-		<div class=" ">
-			<h2 class="lesson-homework__title">Домашние задания</h2>
-			<div class="lesson-homework-empty">
-				<img src="@/assets/images/nohomework.svg" alt="Ничего не задано" />
-				<div class="lesson-homework__subtitle">У вас нет домашних заданий!</div>
-				<Button @click="redirectToAddHomework">Добавить новое</Button>
+		<h2 class="lesson-homework__title">Домашние задания</h2>
+
+		<div
+			class="lesson-homework-empty"
+			v-if="lesson.homework && lesson.homework.length === 0"
+		>
+			<img src="@/assets/images/nohomework.svg" alt="Ничего не задано" />
+			<div class="lesson-homework__subtitle">У вас нет домашних заданий!</div>
+			<Button @click="redirectToAddHomework" v-if="role !== 'student'"
+				>Добавить новое</Button
+			>
+		</div>
+
+		<div class="lesson-homework d-flex flex-column" v-else-if="lesson.homework">
+			<div
+				class="lesson-homework__header d-flex justify-space-between align-center"
+			>
+				<div>Название</div>
+				<div>Дедлайн</div>
 			</div>
+			<div
+				class="lesson-homework__row d-flex justify-space-between align-center"
+				v-for="(item, index) in lesson.homework"
+				:key="index"
+			>
+				<div>{{ item.theme }}</div>
+				<div>{{ item.deadline }}</div>
+			</div>
+			<Button
+				v-if="role !== 'student'"
+				@click="redirectToAddHomework"
+				class="align-self-end lesson-homework__button"
+				width="187px"
+				>Добавить новое</Button
+			>
 		</div>
 	</div>
 </template>
@@ -61,6 +91,9 @@ export default {
 	computed: {
 		lesson() {
 			return this.$store.getters.lesson;
+		},
+		role() {
+			return this.$store.getters.role;
 		},
 	},
 	data() {

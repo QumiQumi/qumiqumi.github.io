@@ -47,7 +47,7 @@
 				</v-menu>
 
 				<v-textarea
-					label="Описание (не обязательно)"
+					label="Описание"
 					v-model="text"
 					outlined
 					height="142px"
@@ -63,6 +63,8 @@
 					append-icon="mdi-paperclip"
 					outlined
 					:show-size="1000"
+					:rules="[rules.maxSize]"
+					accept=".jpg,.jpeg,.bmp,.png,.doc,.docx,.csv,.rtf,.xlsx,.xls,.txt,.pdf,.zip"
 				>
 					<template v-slot:selection="{ index, text }">
 						<v-chip v-if="index < 5" color="#7A76FF" dark label small>
@@ -103,6 +105,10 @@ export default {
 			text: "",
 			rules: {
 				required: (v) => !!v || "Это обязательное поле",
+				maxSize: (files) =>
+					!files ||
+					!files.some((file) => file.size > 10e6) ||
+					"Размер файла не должен превышать 10мб",
 			},
 		};
 	},
@@ -125,15 +131,13 @@ export default {
 			return `${year}-${month}-${day}`;
 		},
 		saveHomework() {
-			console.log(this.files);
-
 			let homework = {
 				lesson_id: this.$route.params.id,
 				theme: this.theme,
 				text: this.text,
-				deadline: this.formatDateForBackend,
+				deadline: this.formatDateForBackend(this.date),
 			};
-
+			console.log(homework);
 			this.$store.dispatch("loadingOn");
 			axios
 				.post(homeworksUrl, homework, {
@@ -143,9 +147,10 @@ export default {
 				})
 				.then((resp) => {
 					let homeworkId = resp.data.data.id;
-					this.files.forEach((file) => {
-						this.uploadFile(file, homeworkId);
-					});
+					if (this.files.length)
+						this.files.forEach((file) => {
+							this.uploadFile(file, homeworkId);
+						});
 				})
 				.catch((err) => {
 					this.$store.dispatch("loadingOff");
@@ -158,16 +163,15 @@ export default {
 			let formData = new FormData();
 			formData.append("homework", file);
 
-			console.log(file);
-			console.log(formData);
 			axios
 				.post(url, formData, {
 					headers: {
 						Authorization: `Bearer ${this.$store.getters.token}`,
-						"Content-Type": "form-data",
+						"Content-Type": "multipart/form-data",
 					},
 				})
-				.then(() => {
+				.then((resp) => {
+					console.log(resp.data);
 					this.$store.dispatch("loadingOff");
 				})
 				.catch((err) => {
