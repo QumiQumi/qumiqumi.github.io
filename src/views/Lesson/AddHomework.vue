@@ -137,7 +137,6 @@ export default {
 				text: this.text,
 				deadline: this.formatDateForBackend(this.date),
 			};
-			console.log(homework);
 			this.$store.dispatch("loadingOn");
 			axios
 				.post(homeworksUrl, homework, {
@@ -170,8 +169,7 @@ export default {
 						"Content-Type": "multipart/form-data",
 					},
 				})
-				.then((resp) => {
-					console.log(resp.data);
+				.then(() => {
 					this.$store.dispatch("loadingOff");
 				})
 				.catch((err) => {
