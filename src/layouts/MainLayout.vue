@@ -91,35 +91,8 @@ export default {
 				exact: true,
 				icon: "calendar",
 			},
-			// {
-			// 	title: "Cooбщения",
-			// 	route: "/messages",
-			// 	icon: "message",
-			// 	exact: true,
-			// },
-			// {
-			// 	title: "Мои предметы",
-			// 	route: "/sujects",
-			// 	icon: "study",
-			// 	exact: true,
-			// },
-			// {
-			// 	title: "Журнал",
-			// 	route: "/teacher-book",
-			// 	icon: "teacherBook",
-			// 	exact: true,
-			// },
-			// {
-			// 	title: "Настройки",
-			// 	route: "/settings",
-			// 	icon: "settings",
-			// 	exact: true,
-			// },
 			{ title: "Учителя", route: "/register-teacher", icon: "profile" },
 			{ title: "Мой класс", route: "/my-class", icon: "profile" },
-			// { title: "Забыли пароль?", route: "/forgot-password" },
-			// { title: "Восстановление пароля", route: "/reset-password" },
-			{ title: "Авторизация", route: "/sign-in" },
 		],
 	}),
 	computed: {
@@ -149,12 +122,11 @@ export default {
 		isRouteAllowed(url) {
 			let roles = this.$router.resolve({ path: url }).route.meta.roles;
 			let currentRole = this.$store.getters.role;
-			if (roles)
-				for (let i = 0; i < roles.length; i++) {
-					if (roles[i].includes("all") || roles[i].includes(currentRole)) {
-						return true;
-					}
-				}
+
+			if (roles && (roles.includes("all") || roles.includes(currentRole))) {
+				return true;
+			}
+
 			return false;
 		},
 	},

@@ -133,7 +133,6 @@ export default {
 				text: this.text,
 				deadline: this.formatDateForBackend,
 			};
-			console.log(homework);
 
 			this.$store.dispatch("loadingOn");
 			axios
@@ -143,10 +142,10 @@ export default {
 					},
 				})
 				.then((resp) => {
-					console.log(resp.data);
-					// this.files.forEach(file => {
-					// 	this.uploadFile(file, resp.data.id)
-					// });
+					let homeworkId = resp.data.data.id;
+					this.files.forEach((file) => {
+						this.uploadFile(file, homeworkId);
+					});
 				})
 				.catch((err) => {
 					this.$store.dispatch("loadingOff");
@@ -156,10 +155,16 @@ export default {
 		},
 		uploadFile(file, homeworkId) {
 			let url = filesUrl.replace("%", homeworkId);
+			let formData = new FormData();
+			formData.append("homework", file);
+
+			console.log(file);
+			console.log(formData);
 			axios
-				.post(url, file, {
+				.post(url, formData, {
 					headers: {
 						Authorization: `Bearer ${this.$store.getters.token}`,
+						"Content-Type": "form-data",
 					},
 				})
 				.then(() => {

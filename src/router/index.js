@@ -57,20 +57,31 @@ const routes = [
 	{
 		path: "/timetable/lesson/:id",
 		name: "lesson",
-		meta: { layout: "main", requiresAuth: true, roles: ["class_teacher"] },
-		component: () => import("../views/Lesson/Lesson.vue"),
-		children: []
+		meta: {
+			layout: "main",
+			requiresAuth: true,
+			roles: ["class_teacher, teacher"]
+		},
+		component: () => import("../views/Lesson/Lesson.vue")
 	},
 	{
 		path: "/timetable/lesson/:id/add-homework",
 		name: "addHomework",
-		meta: { layout: "main", requiresAuth: true, roles: ["class_teacher"] },
+		meta: {
+			layout: "main",
+			requiresAuth: true,
+			roles: ["class_teacher, teacher"]
+		},
 		component: () => import("../views/Lesson/AddHomework.vue")
 	},
 	{
 		path: "/timetable/lesson/:id/homework/:homeworkId",
-		name: "addHomework",
-		meta: { layout: "main", requiresAuth: true, roles: ["class_teacher"] },
+		name: "homework",
+		meta: {
+			layout: "main",
+			requiresAuth: true,
+			roles: ["class_teacher, teacher"]
+		},
 		component: () => import("../views/Lesson/AddHomework.vue")
 	}
 ];
@@ -85,7 +96,7 @@ router.beforeEach((to, from, next) => {
 
 	// Если страница требует авторизации
 	// и пользователь не авторизован то перенаправить на авторизацию
-	if (to.matched.some(record => record.meta.requiresAuth)) {
+	if (to.requiresAuth) {
 		if (!store.getters.isLoggedIn) {
 			next({
 				path: "/sign-in",

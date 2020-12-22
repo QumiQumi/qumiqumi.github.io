@@ -8,5 +8,5 @@ export const teachersUrl = baseUrl + "teachers";
 export const classTeachersUrl = baseUrl + "class_teachers";
 export const subjectsUrl = baseUrl + "subjects";
 export const homeworksUrl = baseUrl + "homeworks";
-export const filesUrl = baseUrl + "homeworks/%/uploadTiles";
+export const filesUrl = baseUrl + "homeworks/%/uploadFiles";
 export const timetableUrl = baseUrl + "classes/%/timetables/getByDate";
