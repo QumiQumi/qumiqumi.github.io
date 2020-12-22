@@ -203,10 +203,12 @@ export default {
 				getWhat: "subjects",
 			});
 		},
-		async loadTimetable(direction = "") {
+		clearTable() {
 			for (let key in this.lessons) {
 				this.lessons[key] = "";
 			}
+		},
+		async loadTimetable(direction = "") {
 			let monday = getMonday(direction, this.currentDate);
 			await this.$store.dispatch("get", {
 				getWhat: "timetable",
