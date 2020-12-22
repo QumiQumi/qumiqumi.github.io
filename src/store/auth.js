@@ -35,8 +35,6 @@ export default {
 		teacherClasses: state =>
 			state.user.roles !== undefined ? [] : state.user.classes,
 		user: state => state.user
-		// classNumber: state => state.user.class.class_number,
-		// currentClasses: state => state.user.classes
 	},
 	mutations: {
 		auth_request(state) {
@@ -79,6 +77,7 @@ export default {
 						resolve(resp);
 					})
 					.catch(err => {
+						console.log(err);
 						commit("auth_error");
 						localStorage.removeItem("token");
 						localStorage.removeItem("user");

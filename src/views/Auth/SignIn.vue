@@ -24,7 +24,7 @@
 					class="auth-panel__input"
 					:type="isVisible ? 'text' : 'password'"
 					label="Пароль"
-					:rules="[rules.required, rules.length(4)]"
+					:rules="[rules.required]"
 					v-model="password"
 					:append-icon="isVisible ? 'mdi-eye' : 'mdi-eye-off'"
 					@click:append="() => (isVisible = !isVisible)"
@@ -80,14 +80,10 @@ export default {
 			this.$store
 				.dispatch("login", { name, password })
 				.then(() => {
-					this.$router.push(this.$route.query.redirect || "/lk");
+					this.$router.push(this.$route.query.redirect || "/timetable");
 				})
-				.catch((err) => {
-					switch (err.response.status) {
-						case 400: {
-							this.passwordMessage = "Неверный логин или пароль";
-						}
-					}
+				.catch(() => {
+					this.passwordMessage = "Неверный логин или пароль";
 				})
 				.finally(() => (this.isLoading = false));
 		},
